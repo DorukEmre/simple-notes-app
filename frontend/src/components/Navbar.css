@@ -1,0 +1,7 @@
+.link {
+  color: whitesmoke;
+}
+.link:hover {
+  text-decoration: none;
+  color: pink;
+}
