@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { nanoid } from 'nanoid'
 
 const CreateNote = () => {
   const [input, setInput] = useState({
+    id: '',
     title: '',
     content: '',
   })
@@ -23,6 +25,7 @@ const CreateNote = () => {
   function handleClick(event) {
     event.preventDefault()
     const newNote = {
+      id: nanoid(),
       title: input.title,
       content: input.content,
     }

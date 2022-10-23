@@ -4,22 +4,11 @@ import axios from 'axios'
 const Notes = () => {
   const [notes, setNotes] = useState([
     {
+      id: '',
       title: '',
       content: '',
     },
   ])
-
-  // Fetch the data
-  // useEffect(() => {
-  //   fetch('http://localhost:3001/notes')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json()
-  //       }
-  //     })
-  //     .then((jsonRes) => setNotes(jsonRes))
-  // }, [])
-  // console.log(notes)
 
   useEffect(() => {
     axios
@@ -34,14 +23,16 @@ const Notes = () => {
   return (
     <div className="container">
       <h1>Notes page</h1>
-      {notes
-        ? notes.map((note) => (
-            <>
-              <h1>{note.title}</h1>
-              <p>{note.content}</p>
-            </>
-          ))
-        : ''}
+      <div>
+        {notes
+          ? notes.map((note) => (
+              <div key={note.id}>
+                <h1>{note.title}</h1>
+                <p>{note.content}</p>
+              </div>
+            ))
+          : ''}
+      </div>
     </div>
   )
 }
