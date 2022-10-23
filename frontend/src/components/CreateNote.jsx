@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 const CreateNote = () => {
   const [input, setInput] = useState({
@@ -16,9 +17,18 @@ const CreateNote = () => {
     })
   }
 
+  // When we click button, we POST the information we just inputted:
+  // - address of the backend server
+  // - data we will send: 'newNote'
   function handleClick(event) {
     event.preventDefault()
-    console.log(input)
+    const newNote = {
+      title: input.title,
+      content: input.content,
+    }
+    axios
+      .post('http://localhost:3001/create', newNote)
+      .catch((err) => console.log(err))
   }
 
   return (
