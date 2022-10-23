@@ -13,15 +13,15 @@ app.use(express.json())
 mongoose.connect(process.env.DB_STRING)
 
 // If we are in production environment, use static client files, and use main 'index.html' file
+
+console.log('NODE_ENV', process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
-  console.log('NODE_ENV is ', process.env.NODE_ENV)
-  console.log(path.resolve(__dirname, '../frontend/build', 'index.html'))
   app.use(express.static('frontend/build'))
   // General route applicable to any URL
   app.get('*', (req, res) => {
     console.log(__dirname)
-    console.log(path.resolve(__dirname, '../frontend/build', 'index.html'))
-    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
+    console.log(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
   })
 }
 
