@@ -23,7 +23,7 @@ const Notes = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/notes')
+      .get('/notes')
       .then((res) => {
         // console.log(res)
         setNotes(res.data)
@@ -36,10 +36,10 @@ const Notes = () => {
       <h1>Notes page</h1>
       {notes
         ? notes.map((note) => (
-            <>
+            <div key={note.id} className="id">
               <h1>{note.title}</h1>
               <p>{note.content}</p>
-            </>
+            </div>
           ))
         : ''}
     </div>
