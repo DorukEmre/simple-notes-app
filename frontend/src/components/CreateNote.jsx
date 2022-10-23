@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { nanoid } from 'nanoid'
 
 const CreateNote = () => {
   const [input, setInput] = useState({
-    id: '',
     title: '',
     content: '',
   })
@@ -25,11 +23,12 @@ const CreateNote = () => {
   function handleClick(event) {
     event.preventDefault()
     const newNote = {
-      id: nanoid(),
       title: input.title,
       content: input.content,
     }
-    axios.post('/create', newNote).catch((err) => console.log(err))
+    axios
+      .post('http://localhost:3001/create', newNote)
+      .catch((err) => console.log(err))
   }
 
   return (

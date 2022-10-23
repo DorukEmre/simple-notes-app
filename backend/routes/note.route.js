@@ -5,7 +5,6 @@ const Note = require('../models/Note.model')
 // POST route to create a new note
 router.route('/create').post((req, res) => {
   const newNote = new Note({
-    id: req.body.id,
     title: req.body.title,
     content: req.body.content,
   })

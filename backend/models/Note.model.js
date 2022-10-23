@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const notesSchema = {
-  id: String,
   title: String,
   content: String,
 }
